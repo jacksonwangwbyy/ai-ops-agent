@@ -30,7 +30,7 @@ public class OperationsToolbox {
         return result;
     }
 
-    @Tool(description = "Get the latest health status for a supported service, including error rate, p95 latency, suspected cause and the next troubleshooting step. Use this before giving a diagnosis about a specific service.")
+    @Tool(description = "Get the latest health status for a supported service, including error rate, p95 latency, suspected cause and the next troubleshooting step. Always use this before diagnosing a specific service. If the user asks why an issue is happening, what to check first, or what to do next, this tool should usually be called first.")
     public ServiceStatusReport getServiceStatus(
             @ToolParam(description = "The canonical service name, for example payment-service or inventory-service")
             String serviceName
@@ -40,7 +40,7 @@ public class OperationsToolbox {
         return result;
     }
 
-    @Tool(description = "Get the most recent incident summary for a supported service. Use this when the user asks for historical context, possible root causes, or previous fixes.")
+    @Tool(description = "Get the most recent incident summary for a supported service. Use this after checking current status whenever the user asks for root cause, troubleshooting priority, historical comparison, similar incidents, or previous fixes.")
     public IncidentSummary getRecentIncidentSummary(
             @ToolParam(description = "The canonical service name, for example payment-service or inventory-service")
             String serviceName
